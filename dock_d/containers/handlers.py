@@ -18,6 +18,6 @@ class Handlers(DeclarativeContainer):
     name_handler: t.Callable = Singleton(
         name_handler,
         parser=RequestParsers.name_parser,
-        logger=Core.logger,
+        logger=Core.logger.add_kwargs(name="name_handler"),
         sync_service=Services.sync_service
     )

@@ -5,7 +5,7 @@ import logging
 
 from dependency_injector.providers import (
     Configuration,
-    Singleton,
+    Factory,
 )
 from dependency_injector.containers import DeclarativeContainer
 
@@ -17,4 +17,5 @@ class Core(DeclarativeContainer):
     main_config = Configuration('main')
     network_config = Configuration('network_config')
 
-    logger = Singleton(logging.Logger, name="example")
+    logger = Factory(logging.Logger)\
+        .add_kwargs(name="core")
